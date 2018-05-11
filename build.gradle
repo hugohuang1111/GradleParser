@@ -1,0 +1,14 @@
+apply plugin:'com.android.application'
+
+//dikfkf
+
+/*kfdf
+*/
+
+dependencies {
+    //compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile project(':plugin_appodeal')
+    compile project(':lib_adcolony')
+    implementation fileTree(dir: 'libs',
+     include: ['*.jar'])
+}
