@@ -110,10 +110,11 @@ class Parser(object):
             self.curPos += 1
             count += 1
         else:
-            print('readBracketContent first chart is invalid')
+            print('readString first chart is invalid')
             return
         while self.curPos < self.contentLength:
             if self.testChart(bracket):
+                self.curPos += 1
                 break
             self.curPos += 1
 
@@ -227,7 +228,8 @@ class GradleParser(Parser):
 
             parent.addChild(syntaxNode)
 
-            if 'dependencies' == syntaxNode.getAttribute():
+            attribute = syntaxNode.getAttribute()
+            if 'dependencies' == attribute or 'android' == attribute or 'defaultConfig' == attribute:
                 self.parserSyntaxNode(syntaxNode)
 
         self.curPos = resavedPos
